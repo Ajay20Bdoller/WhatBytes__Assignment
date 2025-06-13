@@ -30,7 +30,7 @@ Run development server: npm run dev
 Open http://localhost:3000 in browser
 
 # Deployment
-Live URL:
+Live URL: https://what-bytes-assignment-jivi.vercel.app/
 
 
 Incremental commits for features: filter UI, product listing, product detail page, cart logic.

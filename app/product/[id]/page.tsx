@@ -10,13 +10,6 @@ import { products } from '@/data/products';
 import { Product } from '@/contexts/CartContext';
 import { useCart } from '@/contexts/CartContext';
 
-// ✅ ✅ ✅ Added: generateStaticParams for static export
-export async function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id,
-  }));
-}
-
 export default function ProductDetail() {
   const params = useParams();
   const { dispatch } = useCart();

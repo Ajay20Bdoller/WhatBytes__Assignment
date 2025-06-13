@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // ✅ Remove static export to allow dynamic SSR pages
+  // output: 'export',
+
   eslint: {
     ignoreDuringBuilds: true,
   },

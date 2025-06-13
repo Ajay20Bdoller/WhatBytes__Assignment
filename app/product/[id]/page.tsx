@@ -11,6 +11,13 @@ import { products } from '@/data/products';
 import { Product } from '@/contexts/CartContext';
 import { useCart } from '@/contexts/CartContext';
 
+// ✅ ✅ ✅ Added: generateStaticParams for static export
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
+
 export default function ProductDetail() {
   const params = useParams();
   const { dispatch } = useCart();
@@ -19,7 +26,7 @@ export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    const foundProduct = products.find(p => p.id === params.id);
+    const foundProduct = products.find((p) => p.id === params.id);
     setProduct(foundProduct || null);
   }, [params.id]);
 
@@ -66,7 +73,7 @@ export default function ProductDetail() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <div className="mb-6">
@@ -92,7 +99,7 @@ export default function ProductDetail() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              
+
               {/* Image Thumbnails */}
               {productImages.length > 1 && (
                 <div className="flex space-x-2">
@@ -121,19 +128,15 @@ export default function ProductDetail() {
             <div className="space-y-6">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
-                
+
                 {product.rating && (
                   <div className="flex items-center mb-4">
-                    <div className="flex items-center">
-                      {renderStars(product.rating)}
-                    </div>
+                    <div className="flex items-center">{renderStars(product.rating)}</div>
                     <span className="ml-2 text-gray-600">({product.rating} stars)</span>
                   </div>
                 )}
-                
-                <div className="text-4xl font-bold text-blue-700 mb-4">
-                  ${product.price}
-                </div>
+
+                <div className="text-4xl font-bold text-blue-700 mb-4">${product.price}</div>
               </div>
 
               {product.description && (
@@ -194,21 +197,17 @@ export default function ProductDetail() {
             <div className="space-y-6">
               <div className="bg-gray-50 p-6 rounded-lg">
                 <div className="flex items-center mb-2">
-                  <div className="flex items-center">
-                    {renderStars(5)}
-                  </div>
+                  <div className="flex items-center">{renderStars(5)}</div>
                   <span className="ml-2 font-semibold">John D.</span>
                 </div>
                 <p className="text-gray-700">
                   "Excellent product! Exactly as described and arrived quickly. Highly recommend!"
                 </p>
               </div>
-              
+
               <div className="bg-gray-50 p-6 rounded-lg">
                 <div className="flex items-center mb-2">
-                  <div className="flex items-center">
-                    {renderStars(4)}
-                  </div>
+                  <div className="flex items-center">{renderStars(4)}</div>
                   <span className="ml-2 font-semibold">Sarah M.</span>
                 </div>
                 <p className="text-gray-700">
